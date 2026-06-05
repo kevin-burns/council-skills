@@ -1,0 +1,20 @@
+{
+  "name": "design-council",
+  "version": "1.0.0",
+  "description": "Multi-perspective product/engineering design council. Specialist roles contribute in their own lane, a red team runs a pre-mortem, and the Director synthesises with dissent preserved.",
+  "author": {
+    "name": "Kevin Burns",
+    "url": "https://github.com/kevin-burns"
+  },
+  "homepage": "https://github.com/kevin-burns/council-skills/tree/main/plugins/design-council",
+  "license": "MIT",
+  "keywords": [
+    "product",
+    "architecture",
+    "design-review",
+    "pre-mortem",
+    "build-vs-buy",
+    "red-team",
+    "rfc"
+  ]
+}

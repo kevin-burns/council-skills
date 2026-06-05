@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# cloud-council fetches upstream cloud skills at runtime; never commit the cache
+plugins/cloud-council/skills/cloud-council/vendor-skills/*
+!plugins/cloud-council/skills/cloud-council/vendor-skills/.gitignore

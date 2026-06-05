@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "council-skills",
+  "description": "Multi-perspective deliberation councils for Claude Code. A Director convenes specialist roles, runs them in their own lane, lets a red team attack the synthesis, and preserves dissent instead of averaging it.",
+  "owner": {
+    "name": "Kevin Burns",
+    "url": "https://github.com/kevin-burns"
+  },
+  "plugins": [
+    {
+      "name": "cloud-council",
+      "description": "Convene a cloud-architecture council: a specialist AWS/Azure/GCP architect produces a multi-pillar design decision stress-tested by a red team. Runs single-cloud design/audit, cloud-selection, and hybrid modes. Grounds reasoning in installed cloud skills, treats live-docs MCP as opt-in.",
+      "author": {
+        "name": "Kevin Burns"
+      },
+      "category": "infrastructure",
+      "source": "./plugins/cloud-council",
+      "homepage": "https://github.com/kevin-burns/council-skills/tree/main/plugins/cloud-council"
+    },
+    {
+      "name": "design-council",
+      "description": "Convene a product/engineering design council: a panel of specialist roles (product, PM, architecture, front-end, UX, security, data, go-to-market) each contribute in their own lane, a red team runs a pre-mortem, and the Director synthesises with disagreements surfaced rather than flattened.",
+      "author": {
+        "name": "Kevin Burns"
+      },
+      "category": "productivity",
+      "source": "./plugins/design-council",
+      "homepage": "https://github.com/kevin-burns/council-skills/tree/main/plugins/design-council"
+    }
+  ]
+}

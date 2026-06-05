@@ -1,0 +1,21 @@
+{
+  "name": "cloud-council",
+  "version": "1.0.0",
+  "description": "Multi-pillar public-cloud architecture council. A specialist AWS/Azure/GCP architect produces a design decision stress-tested by a red team; pillar tensions are surfaced rather than averaged.",
+  "author": {
+    "name": "Kevin Burns",
+    "url": "https://github.com/kevin-burns"
+  },
+  "homepage": "https://github.com/kevin-burns/council-skills/tree/main/plugins/cloud-council",
+  "license": "MIT",
+  "keywords": [
+    "cloud",
+    "architecture",
+    "aws",
+    "azure",
+    "gcp",
+    "well-architected",
+    "red-team",
+    "review"
+  ]
+}
