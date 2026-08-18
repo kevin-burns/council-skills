@@ -1,6 +1,6 @@
 # Council Roster Reference
 
-This is the full list of available council members, what each one is for, and when to include or leave them out. The Director uses this to compose a roster when none of the presets in `presets.md` fits cleanly.
+This is the full list of available council members, what each one is for, and when to include or leave them out. The Director uses this to compose a roster when none of the presets in `compositions.md` fits cleanly.
 
 ## How to read this
 
