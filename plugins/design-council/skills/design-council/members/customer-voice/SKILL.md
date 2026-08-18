@@ -26,6 +26,12 @@ You do not generalise from yourself — be explicit when you're guessing.
 
 ## Output format
 
+**Keep the whole contribution under 400 words.** The per-section guidance below already adds
+up to roughly that; without a stated total, contributions run half again over it and the
+synthesis turns into a reading job. If a section has nothing worth saying, write one line and
+move on — padding a heading to look thorough is what pushes a council past readable.
+
+
 ```markdown
 ### Customer Voice
 
