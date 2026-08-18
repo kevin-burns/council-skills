@@ -37,11 +37,22 @@ State the composition explicitly to the user before running it — one line per 
 
 If you're unsure between two compositions, default to the smaller one. Adding a member is cheap; pruning a noisy member after the fact is not.
 
-### Step 3: Run the proposers in parallel
+### Step 3: Run the proposers, one at a time
 
 Read each selected member's SKILL.md from `members/<member-name>/SKILL.md`. For each member, generate their contribution to the brief independently — do not let one member's reasoning influence another's. Read and respond one member at a time: fully draft member A's response before reading member B's role description. Each member produces a contribution in their own structured format (defined in their SKILL.md).
 
 Every member opens with a three-line **triage header** — Verdict (proceed/revise/reject), Top concern (one sentence), and Blocker before proceeding? (yes/no). When several reports land at once, scan the headers first: you can see at a glance who's content, who wants changes, and who's raising a blocker, then read the bodies for substance. The header is for triage; it never replaces the body, and a terse header on a verbose report should not let that report drown out the others.
+
+**Order the proposers deliberately: the contrarian lenses go first.** Measured 2026-08-18 on
+this skill: a member run last, after five others, produced output 15% longer and roughly ten
+times more consistent run-to-run than the same member run first — and named the members that
+preceded it in two runs of five. Anchoring is real here, and the cost falls on whoever goes
+last. So run the seats whose value *is* their independence — pragmatist, customer-voice, the
+lens most likely to be talked out of its position — before the seats that mostly report facts.
+Do not run the same seat last every time.
+
+This is a mitigation, not a fix. Only a real context boundary removes anchoring, which is why
+the red team is dispatched rather than reordered.
 
 The Red Team is **not** a proposer. It does not run in this step.
 
@@ -66,7 +77,29 @@ Read the red team member SKILL.md for the current composition. There are three v
 
 Pick the one that fits the composition's centre of gravity. For hybrid councils, prefer the product red team unless the request is overwhelmingly about implementation — and prefer the front-end red team when the dominant risk is on the client. Run exactly one; two red teams is noise unless the question is genuinely split across two flavours.
 
-Feed the working synthesis to the red team and run it. The red team produces a structured critique: unstated assumptions, second-order effects, failure scenarios, and a pre-mortem ("this fails in six months — why?"). It does **not** propose alternatives — its job is to find weaknesses.
+**Dispatch the red team as a sub-agent.** This is the one seat that does not run inline, and
+the reason is specific: the red team is supposed to be a fresh reviewer who did not write the
+thing. Run inline, it is the same context that just produced every proposal and the synthesis
+— it would be reviewing its own work while remembering why each choice seemed good. Isolation
+is the entire value of the seat, so it is worth one cold cache. The proposers stay inline;
+they read the same brief and their outputs are short, so seven cold caches would buy little.
+
+The sub-agent has **no access to this conversation and no access to the skill's files**, so
+its brief must be self-contained. Include, pasted in full:
+
+- The working synthesis from Step 4.
+- The chosen red-team member's `SKILL.md`, **verbatim** — its role definition, output format
+  and anti-patterns. Do not summarise it and do not pass a file path; the sub-agent cannot
+  read one.
+- The original user request, so it can judge the synthesis against what was actually asked.
+
+Do **not** pass the individual member contributions. Feeding it the reasoning it is meant to
+audit independently defeats the isolation you just paid for.
+
+The red team produces a structured critique: unstated assumptions, second-order effects,
+failure scenarios, and a pre-mortem ("this fails in six months — why?"). It does **not**
+propose alternatives — its job is to find weaknesses. If it returns alternatives anyway, cut
+them at synthesis rather than re-running it.
 
 ### Step 6: Produce the final brief
 
@@ -109,6 +142,31 @@ The full roster lives in `references/roster.md`. Read it when picking a composit
 ## Compositions
 
 Named presets live in `references/compositions.md`. Read it in Step 2. Compositions cover product-mode (discovery, prioritisation, GTM, pricing, build-vs-buy), engineering-mode (architecture review, RFC review, incident pre-mortem), and hybrid (data platform, migration, scaling).
+
+## Design rules
+
+Six members carry a **pointer** into the `software-design-rules` skill, naming the book their
+lens actually turns on: software-architect, data-engineer, devops-sre, feasibility-engineering,
+pragmatist, and front-end-engineer. When you run one of those members, follow its pointer — the
+named vocabulary is what separates a structural finding from an opinion. "Possible Feature
+Envy" is arguable; "this feels tangled" is not.
+
+`red-team-engineering` is the exception: it carries the same material **inlined** rather than
+pointed at, because it is the one seat dispatched as a sub-agent (Step 5) and a sub-agent
+cannot follow a pointer to a file it has no access to. Form follows invocation — pointer for
+inline seats, inlined digest for dispatched ones.
+
+The other nine carry none, deliberately. A product strategist reaching for Clean Architecture
+is the sprawl failure rather than thoroughness: it spends attention and returns nothing that
+lens can use.
+
+If a member is seen skipping its pointer, sharpen the pointer's wording before considering
+inlining the material. A must-have target behind a weakly worded pointer is a variance bug,
+and inlining is the expensive fix, not the first one.
+
+*The pointer-before-inlining discipline is from Matt Pocock's `writing-for-agents`
+(github.com/mattpocock/skills, MIT, commit 9c9f36c). The rules themselves belong to the
+`software-design-rules` skill, which credits its own fourteen sources.*
 
 ## Failure modes to avoid
 
